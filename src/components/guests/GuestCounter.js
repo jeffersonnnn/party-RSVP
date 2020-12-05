@@ -6,7 +6,8 @@ const GuestCounter = () => {
   const totalInvited = guests.length;
   const attending = guests.filter(guest => guest.isConfirmed);
   const totalAttending = attending.length;
-  // const totalByDiet
+  const invitedByDiet = (type) => guests.filter(guest => guest.dietary === type).length
+  const attendingByDiet = (type) => attending.filter(guest => guest.dietary === type).length
 
   return (
     <div>
@@ -19,22 +20,22 @@ const GuestCounter = () => {
           </tr>
           <tr>
             <th>Non-Veg</th>
-            <td>10</td>
-            <td>5</td>
+            <td>{invitedByDiet('non-vegan')}</td>
+            <td>{invitedByDiet('non-vegan')}</td>
           </tr>
           <tr>
             <th>Vegan</th>
-            <td>10</td>
+            <td>{invitedByDiet('vegan')}</td>
             <td>5</td>
           </tr><tr>
             <th>Pescetarians</th>
-            <td>10</td>
-            <td>5</td>
+  <td>{invitedByDiet('pescatarian')}</td>
+  <td>{invitedByDiet('pescatarian')}</td>
           </tr>
           <tr>
             <th>Total</th>
-            <td>10</td>
-            <td>5</td>
+  <td>{totalInvited}</td>
+  <td>{totalAttending}</td>
           </tr>
         </tbody>
       </table>
